@@ -5,9 +5,14 @@ const newGridBtn = document.querySelector('button')
 newGridBtn.addEventListener('click', e=>{
 
     let side = prompt("Enter number of squares on each side")
+
+    while(side>100 || isNaN(side)){
+        alert("Enter number less than 100")
+        side = prompt("Enter number of squares on each side")
+    }
     let container = document.querySelector('.container')
     container.remove()
-    createGrid(side)
+    createGrid(parseInt(side))
 
 });
 
