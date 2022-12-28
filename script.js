@@ -2,6 +2,10 @@ createGrid(4)
 
 const newGridBtn = document.querySelector('button')
 
+document.body.onmousedown = () => (mouseDown = true)
+document.body.onmouseup = () => (mouseDown = false)
+document.body.ondragstart = () => (mouseDown = false)
+
 newGridBtn.addEventListener('click', e=>{
 
     let side = prompt("Enter number of squares on each side")
@@ -13,19 +17,9 @@ newGridBtn.addEventListener('click', e=>{
     let container = document.querySelector('.container')
     container.remove()
     createGrid(parseInt(side))
+    
 
 });
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -57,10 +51,26 @@ function createGrid(side) {
 
     squares.forEach(square => {
 
-        square.addEventListener("mouseover", e => {
-            square.style.backgroundColor = "black";
+        let currentRGB = 210
+        square.addEventListener("mousedown", e =>{
+
+            square.style.backgroundColor = `rgb(${currentRGB},${currentRGB},${currentRGB})`;
+            currentRGB-=21
 
         });
+        square.addEventListener("mouseover", e =>{
+            if(!mouseDown)
+            {
+                return 
+            } else {
+                square.style.backgroundColor = `rgb(${currentRGB},${currentRGB},${currentRGB})`;
+                currentRGB-=40
+            }
+
+        });
+        
 
     });
 }
+
+
