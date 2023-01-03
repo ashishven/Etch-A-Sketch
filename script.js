@@ -4,7 +4,7 @@ const newGridBtn = document.querySelector('button')
 
 document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
-document.body.ondragstart = () => (mouseDown = false)
+
 
 newGridBtn.addEventListener('click', e=>{
 
